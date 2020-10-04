@@ -1,4 +1,8 @@
 class Plan < ApplicationRecord
+  # associations
+  has_many :attends
+  has_many :users, through: :attends
+
   # validations
   validates :user_id, presence: true
   validates :start_date, presence: true, uniqueness: { scope: [:user_id, :end_date] }

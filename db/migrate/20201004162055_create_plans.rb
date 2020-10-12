@@ -5,8 +5,8 @@ class CreatePlans < ActiveRecord::Migration[6.0]
       t.references :user, index: true, foreign_key: true, null: false
       t.datetime :start_date, null: false
       t.datetime :end_date, null: false
-      t.boolean :again, default: false
       t.string :twicall_url
+      t.string :emoji, null: false
 
       t.timestamps
     end

@@ -12,29 +12,30 @@
 
 ActiveRecord::Schema.define(version: 2020_10_04_170025) do
 
-  create_table "attends", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "attends", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "plan_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["plan_id"], name: "index_attends_on_plan_id"
+    t.index ["user_id", "plan_id"], name: "index_attends_on_user_id_and_plan_id", unique: true
     t.index ["user_id"], name: "index_attends_on_user_id"
   end
 
-  create_table "plans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "plans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.bigint "user_id", null: false
     t.datetime "start_date", null: false
     t.datetime "end_date", null: false
-    t.boolean "again", default: false
     t.string "twicall_url"
+    t.string "emoji", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id", "start_date", "end_date"], name: "index_plans_on_user_id_and_start_date_and_end_date", unique: true
     t.index ["user_id"], name: "index_plans_on_user_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "twitter_id", null: false
     t.string "email"

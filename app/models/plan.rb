@@ -9,7 +9,7 @@ class Plan < ApplicationRecord
   validates :end_date, presence: true, uniqueness: { scope: [:user_id, :start_date] }
 
   validate :end_is_future_than_start
-  validate :twicall_url_format
+  validate :twicall_url_format, if: -> { twicall_url }
 
   def end_is_future_than_start
     errors.add(:end_date, 'は将来の時間を選択してください') if end_date < start_date

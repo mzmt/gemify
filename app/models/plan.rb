@@ -1,7 +1,6 @@
 class Plan < ApplicationRecord
   # associations
-  has_many :attends
-  has_many :users, through: :attends
+  belongs_to :user
 
   # validations
   validates :user_id, presence: true

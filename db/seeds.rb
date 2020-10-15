@@ -12,12 +12,18 @@ def create_plan
     Plan.create!(
       name: n,
       user_id: User.all.sample.id,
-      start_date: Time.now.ago(1.day) + rand(1..100000).seconds,
+      start_date: Time.now + rand(1..100000).seconds,
       end_date: Time.now.since(2.days) + rand(1..100000).seconds,
       emoji: '🎮'
     )
   end
 end
+
+# def create_appointment
+#   Hospital.all.sample(3).each do |h|
+#     Appointment.create!(user_id: User.all.sample(1).first.id, hospital_id: h.id, visit_date: Time.now.since(7.days))
+#   end
+# end
 
 if Rails.env == 'development'
   create_user

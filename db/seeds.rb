@@ -7,13 +7,13 @@ def create_user
 end
 
 def create_plan
-  names = ['シャドバ', 'minecraft', 'DBD']
+  names = ['シャドバ', 'Minecraft', 'DBD', 'Among us', 'COD']
   names.each do |n|
     Plan.create!(
       name: n,
       user_id: User.all.sample.id,
-      start_date: Time.now + rand(1..100000).seconds,
-      end_date: Time.now.since(2.days) + rand(1..100000).seconds,
+      start_date: Time.now.since(2.days) + 10.minutes,
+      end_date: Time.now.since(2.days) + 1.hour,
       emoji: '🎮'
     )
   end

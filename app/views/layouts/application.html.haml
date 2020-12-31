@@ -1,5 +1,5 @@
 !!!
-%html
+%html.has-background-black
   %head
     %meta{ content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type", name: 'viewport', content: "width=device-width,initial-scale=1"}
     %title Gemify
@@ -8,6 +8,9 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = stylesheet_link_tag 'https://use.fontawesome.com/releases/v5.14.0/js/all.js'
     = stylesheet_link_tag 'https://cdn.jsdelivr.net/npm/bulma@0.9.1/bulma.sass'
+    -# %script{ src: 'https://code.jquery.com/jquery-3.0.0.min.js' }
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    = yield
+    =render 'layouts/header'
+    .container
+      = yield

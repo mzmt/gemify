@@ -1,0 +1,26 @@
+-# .is-fixed-topで上部に固定
+.mt-4
+  %nav.navbar.has-background-black.has-text-light
+    .has-text-centered.has-text-weight-bold gemify
+    .is-pulled-right
+      .btn
+      -# = image_tag('bar.png', alt: 'bar', class: 'btn')
+      .drower.has-text-centered.has-text-white.is-size-5
+        = image_tag('icon.jpeg', alt: 'icon', class: 'profile-icon')
+        %h2.is-size-4.mb-5
+          ='@' + @user.twitter_id
+        .plans あなたの予定
+        .mb-6.is-size-6.has-text-link#copy-target
+          = ENV.fetch('DOMAIN_NAME') + '/' + @user.twitter_id
+          .ml-1.is-size-4.is-inline-block
+            %i.fas.fa-copy#copy
+
+        .about.mb-2 gemifyとは
+        .terms.mb-2 利用規約
+        .policy.mb-2 プライバシーポリシー
+        .contact.mb-2 お問い合わせ
+        .organized.mb-2
+          = '運営'
+          = link_to '@mzmt1204', 'https://twitter.com/mzmt1204', class: 'has-text-link'
+        .logout ログアウト
+= javascript_pack_tag 'copy'

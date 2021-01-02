@@ -1,0 +1,29 @@
+%table.table.is-fullwidth.has-background-black.has-text-light
+  %tbody
+    - @week.each_with_index do |date|
+      %tr
+        %td.is-paddingless.has-text-centered
+          .mb-3.ml-5.is-pulled-left
+            %p= %w(日 月 火 水 木 金 土)[date.wday]
+            %p.is-size-4.circle.has-text-weight-bold= date.day
+          %td.is-paddingless
+            .mb-4
+              - @plans.where(start_date: date.beginning_of_day...date.end_of_day).each do |plan|
+                %table.table.is-fullwidth.is-marginless.has-background-black
+                  %tbody
+                    %tr
+                      %td.is-paddingless.pl-2.pt-3
+                        .button.is-paddingless.is-large.is-dark.is-outlined.has-text-light.is-fullwidth.is-rounded.has-text-left
+                          %table.is-pulled-left
+                            %tr
+                              %td.is-paddingless
+                                .emoji
+                                  = plan.emoji
+                              %td.is-paddingless
+                                .is-size-5
+                                  .name
+                                    -# 10文字以上の場合は...にする
+                                    = plan.name
+                                  .schedule
+                                    = plan.start_date.strftime('%H:%M') + '-' + plan.end_date.strftime('%H:%M')
+= javascript_pack_tag 'drower'

@@ -8,10 +8,12 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
+  port: 5432
 
 development:
   <<: *default
   database: gemify_developtment
+  host: localhost
 
 test:
   <<: *default

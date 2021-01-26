@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: plans
+#
+#  id          :bigint           not null, primary key
+#  name        :string           not null
+#  user_id     :bigint           not null
+#  start_date  :datetime         not null
+#  end_date    :datetime         not null
+#  twicall_url :string
+#  emoji       :string           not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
 class Plan < ApplicationRecord
   # associations
   belongs_to :user

@@ -1,0 +1,5 @@
+- unless current_user
+  = link_to 'Login with Twitter', 'http://127.0.0.1:3000/oauth/twitter'
+
+- if current_user
+  = javascript_pack_tag 'drower'

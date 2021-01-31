@@ -1,4 +1,6 @@
 class PlansController < ApplicationController
+  skip_before_action :require_login, raise: false
+
   def show
     @week = Date.today...Date.today.since(7.days)
     @user = User.find_by(twitter_id: params[:id])

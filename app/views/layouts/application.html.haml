@@ -11,16 +11,11 @@
     %script{ src: 'https://code.jquery.com/jquery-3.0.0.min.js' }
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = favicon_link_tag 'logo/favicon_black.ico'
-  - if request.user_agent.include?('Mobile')
-    %body
-      - if current_user
-        =render 'layouts/header'
-      .container
-        = yield
-  - else
+  - unless request.user_agent.include?('Mobile')
     -# PCの場合
-    %body{ style: 'width: 450px; margin-right: auto; margin-left: auto;' }
-      - if current_user
-        =render 'layouts/header'
-      .container
-        = yield
+    - style = 'width: 450px; margin-right: auto; margin-left: auto;'
+  %body{ style: style }
+    - if current_user
+      =render 'layouts/header'
+    .container
+      = yield

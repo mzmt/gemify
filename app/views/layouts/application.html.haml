@@ -13,12 +13,14 @@
     = favicon_link_tag 'logo/favicon_black.ico'
   - if request.user_agent.include?('Mobile')
     %body
-      =render 'layouts/header'
+      - if current_user
+        =render 'layouts/header'
       .container
         = yield
   - else
     -# PCの場合
-    %body{ style: 'width: 450px; margin-right: auto; margin-left: auto;'}
-      =render 'layouts/header'
+    %body{ style: 'width: 450px; margin-right: auto; margin-left: auto;' }
+      - if current_user
+        =render 'layouts/header'
       .container
         = yield

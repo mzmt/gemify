@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   root 'about#index'
 
-  get    'login'    => 'user_sessions#new'
-  post   'login'    => 'user_sessions#create'
-  delete 'logout'   => 'user_sessions#destroy'
+  # SNSログイン
+  post "oauth/callback", to: "oauths#callback"
+  get "oauth/callback", to: "oauths#callback"
+  get "oauth/:provider", to: "oauths#oauth", as: :auth_at_provider
 
   resources :plans
   resources :users, param: :user_name, only: [:show, :edit, :update]
+  delete 'logout' => 'user_sessions#destroy'
 end

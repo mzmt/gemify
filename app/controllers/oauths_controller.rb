@@ -16,7 +16,7 @@ class OauthsController < ApplicationController
 
         reset_session # protect from session fixation attack
         auto_login(@user)
-        redirect_to root_path, notice: '新規登録しました'
+        redirect_to "/#{current_user.twitter_id}", notice: '新規登録しました'
       rescue
         redirect_to root_path, alert: '登録に失敗しました'
       end

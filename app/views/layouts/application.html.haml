@@ -17,5 +17,8 @@
   %body{ style: style }
     - if current_user
       =render 'layouts/header'
-    .container
-      = yield
+      .container
+        = yield
+    - else
+      .container.mt-5
+        = yield

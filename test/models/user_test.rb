@@ -8,6 +8,7 @@
 #  email      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  icon_url   :string
 #
 require 'test_helper'
 

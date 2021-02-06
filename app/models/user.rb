@@ -8,6 +8,7 @@
 #  email      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  icon_url   :string
 #
 class User < ApplicationRecord
   authenticates_with_sorcery!
@@ -19,5 +20,6 @@ class User < ApplicationRecord
 
   # validations
   validates :name, presence: true, length: { maximum: 63 }
+  validates :icon_url, presence: true, length: { maximum: 127 }
   validates :twitter_id, presence: true, length: { maximum: 63 }
 end

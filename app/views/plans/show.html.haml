@@ -6,6 +6,8 @@
           .mb-3.ml-5.is-pulled-left
             %p= %w(日 月 火 水 木 金 土)[date.wday]
             %p.is-size-4.circle.has-text-weight-bold= date.day
+            %br
+            %button.button.is-small.is-dark.is-outlined.is-circle.is-primary.has-text-white.is-size-4.mt-2 ＋
           %td.is-paddingless
             .mb-4
               - @plans.where(start_date: date.beginning_of_day...date.end_of_day).each do |plan|
@@ -13,7 +15,7 @@
                   %tbody
                     %tr
                       %td.is-paddingless.pl-2.pt-3
-                        .button.is-paddingless.is-large.is-dark.is-outlined.has-text-light.is-fullwidth.is-rounded.has-text-left
+                        .button.is-paddingless.is-large.is-dark.is-outlined.has-text-light.is-fullwidth.is-left-rounded.has-text-left
                           %table.is-pulled-left
                             %tr
                               %td.is-paddingless

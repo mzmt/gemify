@@ -2,7 +2,7 @@ def create_user
   names = %w[tanaka satou sakurai honda nakai]
   names.each do |n|
     t = SecureRandom.alphanumeric(5)
-    User.create!(name: n, email: "#{n}_#{t}@example.com", twitter_id: n + '_' + t)
+    User.create!(name: n, email: "#{n}_#{t}@example.com", twitter_id: n + '_' + t, icon_url: 'https://example.com')
   end
 end
 

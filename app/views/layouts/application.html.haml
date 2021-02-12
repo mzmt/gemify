@@ -15,14 +15,18 @@
     -# PCの場合
     - style = 'width: 450px; margin-right: auto; margin-left: auto;'
   %body{ style: style }
+    -# flash
     - if flash[:alert]
-      .flash.notification.is-danger.has-text-centered.is-radiusless.is-marginless
+      .flash.notification.is-danger.has-text-centered.is-radiusless.is-marginless#fadeout
         = flash[:alert]
+        = javascript_pack_tag 'fadeout'
 
     - if flash[:notice]
-      .flash.notification.is-primary.has-text-centered.is-radiusless.is-marginless
+      .flash.notification.is-primary.has-text-centered.is-radiusless.is-marginless#fadeout
         = flash[:notice]
+        = javascript_pack_tag 'fadeout'
 
+    -# header
     - if current_user
       =render 'layouts/header'
       .container

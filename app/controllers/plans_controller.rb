@@ -6,7 +6,16 @@ class PlansController < ApplicationController
     return redirect_to '/' unless @user
 
     @week = Date.today...Date.today.since(7.days)
+    @plan = Plan.new
     @plans = @user.plans.where(start_date: Time.current...Time.current.since(7.days)).order(:start_date)
     # .where(start_date: date.beginning_of_day...date.end_of_day)
+  end
+
+  def create; end
+
+  private
+
+  def plan_params
+    params.require(:plan).permit(:name)
   end
 end

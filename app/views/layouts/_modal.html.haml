@@ -1,6 +1,29 @@
 .modal#modal
   .modal-background#modal-background
   .modal-content
-    .box.has-background-black
-      %button.button.is-primary aaa
-  %button.modal-close.is-large#close-modal-button
+    .box.has-background-black.mx-5
+      .label.mb-4
+        %button.button.is-size-2.is-primary.is-inverted.has-background-black#close-modal-button ×
+      - if @plan.errors.any?
+        %ul
+          - @plan.errors.full_messages.each do |message|
+            %li= message
+      = form_with model: @plan, local: true do |f|
+        .field
+          = f.label :name, '予定の名前', class: 'label has-text-white'
+          .control
+            = f.text_field :name, class: 'input is-medium has-background-dark is-dark has-text-white', required: true
+        .field
+          = f.label :time, '時間', class: 'label has-text-white'
+          .field-body.is-horizontal
+            .field.is-marginless
+              .control
+                = f.time_field :start_date, class: 'input is-medium has-background-dark is-dark has-text-white', required: true
+            %span.mx-2.has-text-white.has-text-vcentered ～
+            .field
+              .control
+                = f.time_field :end_date, class: 'input is-medium has-background-dark is-dark has-text-white', required: true
+
+        .field.is-horizontal.mt-5
+          .control.has-text-centered
+            %button.button.is-primary.is-rounded ok!

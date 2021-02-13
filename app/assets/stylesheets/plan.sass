@@ -53,3 +53,34 @@ html
 
     .box
       border-radius: 20px
+
+    .has-text-vcentered
+      display: flex
+      align-items: center
+
+    #close-modal-button
+      width: 35px
+      height: 35px
+      padding-bottom: 20px
+      padding-left: 25px
+      position: absolute
+      top: 5px
+      right: 35px
+      cursor: pointer
+      z-index: 200
+
+  // モーダルの時計の横幅調整
+  @media screen and (min-width: 370px), print
+    .field-body
+      display: flex
+      flex-basis: 0
+      flex-grow: 5
+      flex-shrink: 1
+
+  @media screen and (min-width: 370px), print
+    .field-body > .field:not(:last-child)
+      margin-right: 0.75rem
+
+  @media screen and (min-width: 370px), print
+    .field-body > .field:not(.is-narrow)
+      flex-grow: 1

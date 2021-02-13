@@ -1,3 +1,5 @@
+=render 'layouts/modal'
+
 %table.table.is-fullwidth.has-background-black.has-text-light
   %tbody
     - @week.each_with_index do |date|
@@ -8,7 +10,7 @@
             %p.is-size-4.circle.has-text-weight-bold= date.day
             - if current_user && current_user.twitter_id == params[:id]
               %br
-              %button.button.is-small.is-dark.is-outlined.is-circle.is-primary.has-text-white.is-size-4.mt-2 ＋
+              %button.button.is-small.is-dark.is-outlined.is-circle.is-primary.has-text-white.is-size-4.mt-2#open-modal ＋
           %td.is-paddingless
             .mb-4
               - @plans.where(start_date: date.beginning_of_day...date.end_of_day).each do |plan|
@@ -30,3 +32,4 @@
                                   .schedule
                                     = plan.start_date.strftime('%H:%M') + '-' + plan.end_date.strftime('%H:%M')
 = javascript_pack_tag 'drower'
+= javascript_pack_tag 'open_modal'

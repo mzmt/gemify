@@ -25,7 +25,9 @@ class Plan < ApplicationRecord
   validate :twicall_url_format, if: -> { twicall_url }
 
   def end_is_future_than_start
-    errors.add(:end_date, 'は将来の時間を選択してください') if end_date < start_date
+    if end_date && start_date
+      errors.add(:end_date, 'は将来の時間を選択してください') if end_date < start_date
+    end
   end
 
   def twicall_url_format

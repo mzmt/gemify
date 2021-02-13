@@ -10,7 +10,7 @@
             %p.is-size-4.circle.has-text-weight-bold= date.day
             - if current_user && current_user.twitter_id == params[:id]
               %br
-              %button.button.is-small.is-dark.is-outlined.is-circle.is-primary.has-text-white.is-size-4.mt-2#open-modal ＋
+              %button.button.is-small.is-dark.is-outlined.is-circle.is-primary.has-text-white.is-size-4.mt-2.open_modal ＋
           %td.is-paddingless
             .mb-4
               - @plans.where(start_date: date.beginning_of_day...date.end_of_day).each do |plan|

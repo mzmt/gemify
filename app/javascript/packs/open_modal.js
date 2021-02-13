@@ -1,6 +1,7 @@
 $(function ($) {
   $(document).ready(function () {
-    $('#open-modal').click(function () {
+    var open = document.getElementsByClassName('open_modal');
+    $(open).click(function () {
       var modal = document.getElementById('modal');
       modal.classList.add('is-active');
     });

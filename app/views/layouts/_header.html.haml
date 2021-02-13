@@ -11,7 +11,7 @@
           = current_user.name
         .plans あなたの予定
         .mb-6.is-size-6.has-text-link#copy-target
-          = ENV.fetch('DOMAIN_NAME') + '/' + current_user.twitter_id
+          = link_to "#{ENV.fetch('DOMAIN_NAME')}/#{current_user.twitter_id}", "#{ENV.fetch('DOMAIN_NAME')}/#{current_user.twitter_id}"
           .ml-1.is-size-4.is-inline-block
             %i.fas.fa-copy#copy
 

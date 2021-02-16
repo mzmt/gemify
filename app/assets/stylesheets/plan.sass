@@ -20,6 +20,15 @@ html
     .table td, .table th
       border: 0px none
 
+    // autofill時に背景色を変更しない
+    .input.has-background-dark:-webkit-autofill,
+    .input.has-background-dark:-webkit-autofill:hover,
+    .input.has-background-dark:-webkit-autofill:focus,
+    .input.has-background-dark:-webkit-autofill:active
+      transition: background-color 5000s ease-in-out 0s
+      -webkit-box-shadow: 0 0 0px 30px #243341 inset
+      -webkit-text-fill-color: white !important
+
     .button.is-left-rounded
       border-radius: 0px
       border-top-left-radius: 15px

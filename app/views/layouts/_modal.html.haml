@@ -18,11 +18,11 @@
           .field-body.is-horizontal
             .field.is-marginless
               .control
-                = f.time_field :start_date, class: 'input is-medium has-background-dark is-dark has-text-white', required: true
+                = f.time_field :start_date, class: 'input is-medium has-background-dark is-dark has-text-white', required: true, step: 600
             %span.mx-2.has-text-white.has-text-vcentered ～
             .field
               .control
-                = f.time_field :end_date, class: 'input is-medium has-background-dark is-dark has-text-white', required: true
+                = f.time_field :end_date, class: 'input is-medium has-background-dark is-dark has-text-white', required: true, step: 600
 
         .field.is-horizontal.mt-5
           .control.has-text-centered

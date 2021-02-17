@@ -13,6 +13,9 @@
 #  updated_at  :datetime         not null
 #
 class Plan < ApplicationRecord
+  # callbacks
+  before_validation :set_emoji
+
   # associations
   belongs_to :user
 
@@ -32,5 +35,9 @@ class Plan < ApplicationRecord
 
   def twicall_url_format
     errors.add(:twicall_url, 'の形式が不正です') if twicall_url.exclude('https://twicall.net')
+  end
+
+  def set_emoji
+    self.emoji = '🚗'
   end
 end

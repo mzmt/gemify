@@ -1,8 +1,9 @@
-=render 'layouts/modal'
+- @week.each do |date|
+  =render 'layouts/modal', date: date.to_s
 
 %table.table.is-fullwidth.has-background-black.has-text-light
   %tbody
-    - @week.each_with_index do |date|
+    - @week.each do |date|
       %tr
         %td.is-paddingless.has-text-centered
           .mb-3.ml-5.is-pulled-left
@@ -10,7 +11,7 @@
             %p.is-size-4.circle.is-primary.has-text-weight-bold= date.day
             - if current_user && current_user.twitter_id == params[:id]
               %br
-              %button.button.is-small.is-dark.is-outlined.is-circle.is-primary.has-text-white.is-size-4.mt-2.open_modal ＋
+              %button.button.is-small.is-dark.is-outlined.is-circle.is-primary.has-text-white.is-size-4.mt-2{id: "open-modal-#{date}"} ＋
           %td.is-paddingless
             .mb-4
               - @plans.where(start_date: date.beginning_of_day...date.end_of_day).each do |plan|

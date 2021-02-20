@@ -12,7 +12,11 @@ class PlansController < ApplicationController
   end
 
   def create
-    @plan = current_user.plans.new(plan_params)
+    @plan = current_user.plans.new(
+      name: plan_params[:name],
+      start_date: Time.parse(plan_params[:date] + ' ' + plan_params[:start_time]),
+      end_date: Time.parse(plan_params[:date] + ' ' + plan_params[:end_time])
+    )
     if @plan.save
       redirect_to "/#{current_user.twitter_id}", notice: '予約を作成しました🎉　ツイートする'
     else
@@ -25,6 +29,6 @@ class PlansController < ApplicationController
   private
 
   def plan_params
-    params.require(:plan).permit(:name, :start_date, :end_date)
+    params.require(:plan).permit(:name, :date, :start_time, :end_time)
   end
 end

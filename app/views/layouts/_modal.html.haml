@@ -19,6 +19,8 @@
             .field.is-marginless
               .control
                 = f.time_field :start_date, class: 'input is-medium has-background-dark is-dark has-text-white', required: true, step: 600
+              .control
+                = f.hidden_field :date, value: date
             %span.mx-2.has-text-white.has-text-vcentered ～
             .field
               .control

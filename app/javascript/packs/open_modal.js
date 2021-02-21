@@ -12,6 +12,7 @@ $(function ($) {
       var yyyy = target.getFullYear();
       target = yyyy + '-' + mm + '-' + dd;
 
+      // ボタンにモーダル表示のイベントを追加
       var open = document.getElementById('open-modal-' + target);
       open.addEventListener('click', openModal, false);
       open.targetModal = document.getElementById('modal-' + target);
@@ -20,6 +21,10 @@ $(function ($) {
     function openModal(evt) {
       evt.currentTarget.targetModal.id = 'activeModal';
       evt.currentTarget.targetModal.classList.add('is-active');
+
+      // モーダルの最初のフォームにfocus
+      var form = evt.currentTarget.targetModal.querySelector('#plan_name');
+      form.focus();
     }
   });
 });

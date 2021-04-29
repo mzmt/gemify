@@ -25,10 +25,11 @@
             = '運営'
             = link_to '@mzmt1204', 'https://twitter.com/mzmt1204', class: 'has-text-link'
           .logout.mb-6=link_to 'ログアウト', logout_path, class: 'has-text-white', method: 'delete'
-          .colors
-            %button.button.circle.is-medium.is-primary.mr-3
-            %button.button.circle.is-medium.is-orange.mr-3
-            %button.button.circle.is-medium.is-cherry.is-white-outlined
+          -# TODO 色変更機能を追加
+          -# .colors
+          -#   %button.button.circle.is-medium.is-primary.mr-3
+          -#   %button.button.circle.is-medium.is-orange.mr-3
+          -#   %button.button.circle.is-medium.is-cherry.is-white-outlined
 
   = javascript_pack_tag 'copy'
 

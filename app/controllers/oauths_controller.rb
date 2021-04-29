@@ -8,7 +8,6 @@ class OauthsController < ApplicationController
   def callback
     provider = params[:provider]
     if @user = login_from(provider)
-      # twitterのscreen_nameが更新されている場合、ここで更新処理を行う
       redirect_to "/#{current_user.twitter_id}", notice: 'ログインしました✅'
     else
       begin

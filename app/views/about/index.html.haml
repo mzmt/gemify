@@ -1,5 +1,37 @@
-- unless current_user
-  = link_to 'Login with Twitter', "#{ENV.fetch('DOMAIN_NAME')}/oauth/twitter"
+.has-text-centered.has-text-white.mx-3
+  .mb-6
+    %h1.is-size-3.has-text-weight-bold.mb-3 ゲーム予定をオープンに
+    %p.is-size-5 SNSで知り合ったフレンドは、お互い暇な時間が分かりづらいものです。
+    %p.is-size-5 gemify.meで、スムーズにマルチプレイを始めましょう！
 
-- if current_user
-  = javascript_pack_tag 'drower'
+  .mb-6.is-flex{ style: 'justify-content: space-between' }
+    = image_tag 'sample_1.png', alt: 'gemify.meのサンプル画像', class: 'is-neon-blue', width: '45%'
+    = image_tag 'sample_2.png', alt: 'gemify.meのサンプル画像', class: 'is-neon-orange', width: '45%'
+
+  -# %p.mb-2 フレンドに予定を公開する👇
+  = link_to '　Twitterではじめる 🎮', "#{ENV.fetch('DOMAIN_NAME')}/oauth/twitter", class: 'button is-medium is-primary is-dark has-text-weight-bold has-text-white mb-6'
+
+  %h1.is-size-3.has-text-weight-bold.mb-5.mt-3 gemify.meの使い方
+
+  -# .mb-5.is-flex
+  .mb-5
+    -# %p.ml-5.is-size-5.has-text-left{ style: 'vertical-align:top; overflow-wrap: normal;' }
+    %p.mb-3.is-size-5.has-text-left.has-text-weight-bold マルチプレイのスケジュール調整に✏️
+    %p.mb-3.is-size-6.has-text-left フレンドになったばかりの相手にリンクを送れば、簡単にスケジュール調整可能
+    = image_tag 'dm.png', alt: 'gemify.meのサンプル画像', class: 'blue-border'
+
+  .mb-5
+    %p.mb-3.is-size-5.has-text-left.has-text-weight-bold フレンドから声がかかるのを待つ🐶
+    %p.mb-3.is-size-6.has-text-left SNSのプロフィールにリンクを貼っておけば、時間の合うフレンドが声をかけてくれるかも...!
+    = image_tag 'edit_profile.png', alt: 'Twitterのプロフィール編集画面', class: 'blue-border'
+
+  %p.mb-1.has-text-weight-bold 利用料すべて無料でスタート👇
+  = link_to '　利用開始はこちら 👾', "#{ENV.fetch('DOMAIN_NAME')}/oauth/twitter", class: 'button is-medium is-primary is-dark has-text-weight-bold has-text-white'
+
+.footer.mx-5.has-background-black.has-text-white.is-flex{ style: 'justify-content: space-between' }
+  %p 利用規約
+  %p プライバシーポリシー
+  %p 運営
+
+  - if current_user
+    = javascript_pack_tag 'drower'

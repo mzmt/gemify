@@ -1,32 +1,36 @@
--# .is-fixed-topで上部に固定
-.mt-4
-  %nav.navbar.has-background-black.has-text-light
-    .has-text-centered.has-text-weight-bold gemify
-    .is-pulled-right
-      .btn
-      -# = image_tag('bar.png', alt: 'bar', class: 'btn')
-      .drower.has-text-centered.has-text-white.is-size-5
-        = image_tag current_user.icon_url, alt: 'icon', class: 'profile-icon'
-        %h2.is-size-4.mb-5
-          = current_user.name
-        .plans あなたの予定
-        .mb-6.is-size-6.has-text-link#copy-target
-          = link_to "#{ENV.fetch('DOMAIN_NAME')}/#{current_user.twitter_id}", "#{ENV.fetch('DOMAIN_NAME')}/#{current_user.twitter_id}"
-          .ml-1.is-size-4.is-inline-block
-            %i.fas.fa-copy#copy
+- if current_user
+  -# .is-fixed-topで上部に固定
+  .mt-4
+    %nav.navbar.has-background-black.has-text-light
+      .has-text-centered.has-text-weight-bold gemify.me
+      .is-pulled-right
+        .btn
+        -# = image_tag('bar.png', alt: 'bar', class: 'btn')
+        .drower.has-text-centered.has-text-white.is-size-5
+          = image_tag current_user.icon_url, alt: 'icon', class: 'profile-icon'
+          %h2.is-size-4.mb-5
+            = current_user.name
+          .plans あなたの予定
+          .mb-6.is-size-6.has-text-link#copy-target
+            = link_to "#{ENV.fetch('DOMAIN_NAME')}/#{current_user.twitter_id}", "#{ENV.fetch('DOMAIN_NAME')}/#{current_user.twitter_id}"
+            .ml-1.is-size-4.is-inline-block
+              %i.fas.fa-copy#copy
 
-        .about.mb-2=link_to 'gemifyとは', root_path, class: 'has-text-white'
-        .terms.mb-2 利用規約
-        .policy.mb-2 プライバシーポリシー
-        .contact.mb-2
-          = link_to 'お問い合わせ', 'https://forms.gle/UfzNwAqcq3KtKPkU7', class: 'has-text-white', target: :_blank
-        .organized.mb-2
-          = '運営'
-          = link_to '@mzmt1204', 'https://twitter.com/mzmt1204', class: 'has-text-link'
-        .logout.mb-6=link_to 'ログアウト', logout_path, class: 'has-text-white', method: 'delete'
-        .colors
-          %button.button.circle.is-medium.is-primary.mr-3
-          %button.button.circle.is-medium.is-orange.mr-3
-          %button.button.circle.is-medium.is-cherry.is-white-outlined
+          .about.mb-2=link_to 'gemifyとは', root_path, class: 'has-text-white'
+          .terms.mb-2 利用規約
+          .policy.mb-2 プライバシーポリシー
+          .contact.mb-2
+            = link_to 'お問い合わせ', 'https://forms.gle/UfzNwAqcq3KtKPkU7', class: 'has-text-white', target: :_blank
+          .organized.mb-2
+            = '運営'
+            = link_to '@mzmt1204', 'https://twitter.com/mzmt1204', class: 'has-text-link'
+          .logout.mb-6=link_to 'ログアウト', logout_path, class: 'has-text-white', method: 'delete'
+          .colors
+            %button.button.circle.is-medium.is-primary.mr-3
+            %button.button.circle.is-medium.is-orange.mr-3
+            %button.button.circle.is-medium.is-cherry.is-white-outlined
 
-= javascript_pack_tag 'copy'
+  = javascript_pack_tag 'copy'
+
+- unless current_user
+  .has-text-light.has-text-centered.has-text-weight-bold.mb-5 gemify.me

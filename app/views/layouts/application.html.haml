@@ -26,10 +26,6 @@
         = javascript_pack_tag 'fadeout'
 
     -# header
-    - if current_user
-      =render 'layouts/header'
-      .container
-        = yield
-    - else
-      .container.mt-5
-        = yield
+    =render 'layouts/header'
+    .container
+      = yield

@@ -7,8 +7,8 @@ class PlansController < ApplicationController
 
     @week = Date.today...Date.today.since(7.days)
     @plan = Plan.new
-    @plans = @user.plans.where(start_date: Time.current...Time.current.since(7.days)).order(:start_date)
-    # .where(start_date: date.beginning_of_day...date.end_of_day)
+    @plans = @user.plans.where(start_date: Date.today.beginning_of_day...Date.today.since(7.days).end_of_day).order(:start_date)
+    # .where(start_date: Time.current...Time.current.since(7.days))
   end
 
   def create

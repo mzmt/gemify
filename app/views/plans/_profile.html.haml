@@ -1,7 +1,7 @@
-- unless current_user
-  .has-text-centered.has-text-light.mt-5.mx-5
+- unless current_user == @user
+  .has-text-centered.has-text-light.mt-3.mx-5
     .my-3
-      = image_tag @user.icon_url, alt: 'icon', class: 'profile-icon'
+      = image_tag @user.icon_url, alt: 'icon', class: 'profile-icon', width: '70px'
       %p= @user.name
       %p= @user.description
       -# ここにSwitchのID、DiscordのID、PS4のIDとかまとめ

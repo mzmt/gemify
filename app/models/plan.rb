@@ -21,8 +21,8 @@ class Plan < ApplicationRecord
 
   # validations
   validates :user_id, presence: true
-  validates :start_date, presence: true, uniqueness: { scope: [:user_id, :end_date] }
-  validates :end_date, presence: true, uniqueness: { scope: [:user_id, :start_date] }
+  validates :start_date, presence: true, uniqueness: { scope: %i[user_id end_date] }
+  validates :end_date, presence: true, uniqueness: { scope: %i[user_id start_date] }
 
   validate :end_is_future_than_start
   validate :twicall_url_format, if: -> { twicall_url }
@@ -41,5 +41,5 @@ class Plan < ApplicationRecord
     self.emoji = EMOJI.sample
   end
 
-  EMOJI = ['👾', '🐹', '🐶', '🎮', '🏛', '🎹', '👑', '🔰', '💠', '💣', '💰', '🚦', '🚔', '🎾', '⚽️', '🏀', '🍺', '🍰', '🍡', '🍔', '🥝', '🍎', '🥦', '🍀', '🐳', '🐣', '🦁', '🐷', '🌕', '🌤'].freeze
+  EMOJI = ['👾', '🐹', '🐶', '🎮', '🏛', '🎹', '👑', '🦋', '💠', '💣', '💰', '🚦', '🎲', '⚽️', '🦑', '🍺', '🍰', '🥁', '🍔', '🥝', '🍎', '🌼', '🍀', '🐳', '🐣', '🌤'].freeze
 end

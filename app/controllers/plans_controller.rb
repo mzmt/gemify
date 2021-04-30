@@ -18,7 +18,7 @@ class PlansController < ApplicationController
       end_date: Time.parse(plan_params[:date] + ' ' + plan_params[:end_time])
     )
     if @plan.save
-      redirect_to "/#{current_user.twitter_id}", notice: '予約を作成しました🎉　ツイートする'
+      redirect_to "/#{current_user.twitter_id}", notice: '予定を作成しました🎉　ツイートする'
     else
       @week = Date.today...Date.today.since(7.days)
       @plans = current_user.plans.where(start_date: Time.current...Time.current.since(7.days)).order(:start_date)

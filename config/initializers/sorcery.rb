@@ -123,7 +123,8 @@ Rails.application.config.sorcery.configure do |config|
       email: 'email',
       name: 'name',
       icon_url: 'profile_image_url_https',
-    }
+      description: 'description'
+  }
   #
   # config.facebook.key = ""
   # config.facebook.secret = ""

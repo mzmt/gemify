@@ -1,0 +1,11 @@
+- unless current_user
+  .has-text-centered.has-text-light.mt-5.mx-5
+    .my-3
+      = image_tag @user.icon_url, alt: 'icon', class: 'profile-icon'
+      %p= @user.name
+      %p= @user.description
+      -# ここにSwitchのID、DiscordのID、PS4のIDとかまとめ
+      -# %i.fab.fa-playstation
+      -# %i.fab.fa-xbox
+      -# %i.fab.fa-twitch
+      -# %i.fab.fa-steam

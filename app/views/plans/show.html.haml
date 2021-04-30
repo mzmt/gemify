@@ -14,25 +14,13 @@
             - if current_user && current_user.twitter_id == params[:id]
               %br
               %button.button.is-small.is-dark.is-outlined.is-circle.is-primary.has-text-white.is-size-4.mt-2{id: "open-modal-#{date}"} ＋
-          %td.is-paddingless
-            .mb-4
-              - @plans.where(start_date: date.beginning_of_day...date.end_of_day).each do |plan|
-                %table.table.is-fullwidth.is-marginless.has-background-black
-                  %tbody
-                    %tr
-                      %td.is-paddingless.pl-2.pt-3
-                        .button.is-paddingless.is-large.is-dark.is-outlined.has-text-light.is-fullwidth.is-left-rounded.has-text-left
-                          %table.is-pulled-left
-                            %tr
-                              %td.is-paddingless
-                                .emoji
-                                  = plan.emoji
-                              %td.is-paddingless
-                                .is-size-5
-                                  .name
-                                    -# 10文字以上の場合は...にする
-                                    = plan.name
-                                  .schedule
-                                    = plan.start_date.strftime('%H:%M') + '-' + plan.end_date.strftime('%H:%M')
+        %td.is-paddingless{ width: '75%;' }
+          .mb-4
+            - @plans.where(start_date: date.beginning_of_day...date.end_of_day).each do |plan|
+              %button.button.is-paddingless.is-large.is-dark.is-outlined.has-text-light.is-fullwidth.is-left-rounded.has-text-left.mb-2
+                %span.is-inline-block.is-size-3.mx-3= plan.emoji
+                .is-size-6.has-text-weight-bold{ style: 'margin-right: auto;' }
+                  %p= truncate(plan.name, length: 20)
+                  %p= plan.start_date.strftime('%H:%M') + ' - ' + plan.end_date.strftime('%H:%M')
 = javascript_pack_tag 'drower'
 = javascript_pack_tag 'open_modal'

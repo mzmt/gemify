@@ -9,7 +9,7 @@ module ApplicationHelper
       keywords: 'game calender',
       canonical: request.original_url,
       icon: [
-        { href: image_url('logo/icon.png') }
+        { href: @user&.icon_url || image_url('logo/icon.png') }
         # { href: image_url('logo/icon.png'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/png' }
       ],
       og: {
@@ -18,7 +18,7 @@ module ApplicationHelper
         description: @user&.name || 'gemify.meでゲームの予定を公開しましょう',
         type: 'website',
         url: request.original_url,
-        image: image_url('logo/icon.png'),
+        image: @user&.icon_url || image_url('logo/icon.png'),
         locale: 'ja_JP'
       },
       twitter: {

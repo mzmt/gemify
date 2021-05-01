@@ -28,5 +28,6 @@
                 .is-size-6.has-text-weight-bold{ style: 'margin-right: auto;' }
                   %p= truncate(plan.name, length: 20)
                   %p= plan.start_date.strftime('%H:%M') + ' - ' + plan.end_date.strftime('%H:%M')
-= javascript_pack_tag 'drower'
 = javascript_pack_tag 'open_modal'
+- if current_user
+  = javascript_pack_tag 'drower'

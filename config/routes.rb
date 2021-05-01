@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'about#index'
   get '/:id' => 'plans#show'
-  resources :plans, only: [:create]
+  resources :plans, only: [:create, :destroy]
   # ユーザーページを作成する
   # resources :users, param: :user_name, only: [:show, :edit, :update]
 

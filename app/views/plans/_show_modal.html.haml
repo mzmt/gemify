@@ -14,7 +14,7 @@
               = link_to 'ツイート', "https://twitter.com/share?ref_src=twsrc%5Etfw&show-count=false&text=#{plan.name}&url=https://gemify.me/#{@user.twitter_id}", onClick: "popupWindow(this.href,'tweet',650,470);return false;", class: 'has-text-white'
               .ml-1
                 %i.fab.fa-twitter
-            %button.button.is-danger.is-rounded.has-text-weight-bold 削除
+            = link_to '削除', plan, method: :delete, class: 'button is-danger is-rounded has-text-weight-bold'
 
 :javascript
   //新しいウィンドウをブラウザ中央に開く

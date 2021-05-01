@@ -28,6 +28,11 @@ class PlansController < ApplicationController
     end
   end
 
+  def destroy
+    current_user.plans.find(params[:id]).destroy!
+    redirect_to '/' + current_user.twitter_id, notice: '予定を削除しました✏️'
+  end
+
   private
 
   def plan_params

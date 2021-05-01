@@ -6,6 +6,8 @@ class OauthsController < ApplicationController
   end
 
   def callback
+    return redirect_to root_path if params[:denied]
+
     provider = params[:provider]
     if @user = login_from(provider)
       redirect_to "/#{current_user.twitter_id}", notice: 'ログインしました✅'

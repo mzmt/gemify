@@ -12,7 +12,7 @@
           .mb-3.ml-5.is-pulled-left
             %p= %w(日 月 火 水 木 金 土)[date.wday]
             %p.is-size-4.circle.is-primary.has-text-weight-bold= date.day
-            - if current_user && current_user.twitter_id == params[:id]
+            - if current_user == @user
               %br
               :javascript
                 function openModal(id) {

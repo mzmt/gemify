@@ -14,7 +14,12 @@
             %p.is-size-4.circle.is-primary.has-text-weight-bold= date.day
             - if current_user && current_user.twitter_id == params[:id]
               %br
-              %button.button.is-small.is-dark.is-outlined.is-circle.is-primary.has-text-white.is-size-4.mt-2{id: "open-modal-#{date}"} ＋
+              :javascript
+                function openModal(id) {
+                  var modal = document.getElementById(id);
+                  modal.classList.add('is-active');
+                }
+              %button.button.is-small.is-dark.is-outlined.is-circle.is-primary.has-text-white.is-size-4.mt-2{ onClick: "openModal('modal-#{date.to_s}');" } ＋
         %td.is-paddingless{ width: '75%;' }
           .mb-4
             - @plans.where(start_date: date.beginning_of_day...date.end_of_day).each do |plan|

@@ -43,7 +43,7 @@
             }
           %button.button.is-twitter.has-text-weight-bold
             = link_to 'ツイートする', "https://twitter.com/share?ref_src=twsrc%5Etfw&show-count=false&text=#{flash[:game_name]}&url=https://gemify.me/#{@user.twitter_id}", onClick: "popupWindow(this.href,'tweet',650,470);return false;"
-            .mr-1
+            .ml-1
               %i.fab.fa-twitter
         - else
           = flash[:notice]

@@ -1,8 +1,12 @@
 - unless current_user == @user
   =render 'profile'
 
-- @week.each do |date|
-  =render 'modal', date: date
+-# モーダル
+- if current_user == @user
+  - @week.each do |date|
+    =render 'modal', date: date
+- @plans.each do |plan|
+  =render 'show_modal', plan: plan
 
 %table.table.is-fullwidth.has-background-black.has-text-light
   %tbody
@@ -14,20 +18,20 @@
             %p.is-size-4.circle.is-primary.has-text-weight-bold= date.day
             - if current_user == @user
               %br
-              :javascript
-                function openModal(id) {
-                  var modal = document.getElementById(id);
-                  modal.classList.add('is-active');
-                }
               %button.button.is-small.is-dark.is-outlined.is-circle.is-primary.has-text-white.is-size-4.mt-2{ onClick: "openModal('modal-#{date.to_s}');" } ＋
         %td.is-paddingless{ width: '75%;' }
           .mb-4
             - @plans.where(start_date: date.beginning_of_day...date.end_of_day).each do |plan|
-              %button.button.is-paddingless.is-large.is-dark.is-outlined.has-text-light.is-fullwidth.is-left-rounded.has-text-left.mb-2
+              %button.button.is-paddingless.is-large.is-dark.is-outlined.has-text-light.is-fullwidth.is-left-rounded.has-text-left.mb-2{ onClick: "openModal('modal-#{plan.id}');" }
                 %span.is-inline-block.is-size-3.mx-3= plan.emoji
                 .is-size-6.has-text-weight-bold{ style: 'margin-right: auto;' }
                   %p= truncate(plan.name, length: 20)
                   %p= plan.start_date.strftime('%H:%M') + ' - ' + plan.end_date.strftime('%H:%M')
 = javascript_pack_tag 'open_modal'
+:javascript
+  function openModal(id) {
+    var modal = document.getElementById(id);
+    modal.classList.add('is-active');
+  }
 - if current_user
   = javascript_pack_tag 'drower'

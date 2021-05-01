@@ -1,0 +1,14 @@
+.modal{ id: "modal-#{plan.id}" }
+  .modal-background#modal-background
+  .modal-content
+    .box.has-background-black.mx-5
+      %button.button.is-size-2.is-primary.is-inverted.has-background-black#close-modal-button ×
+      .has-text-centered.has-text-light.has-text-weight-bold.is-size-5
+        %p.is-size-2= plan.emoji
+        %p.mb-1{style: 'word-wrap: break-word;'}= plan.name
+        -# %p= plan.start_date.strftime('%-m/%-e')
+        %p= plan.start_date.strftime('%H:%M') + ' - ' + plan.end_date.strftime('%H:%M')
+        - if current_user == @user
+          .mb-3.mt-5
+            %button.button.is-primary.is-rounded.has-text-weight-bold.mr-2 ツイート
+            %button.button.is-danger.is-rounded.has-text-weight-bold 削除

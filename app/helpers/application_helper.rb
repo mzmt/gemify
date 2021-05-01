@@ -16,7 +16,7 @@ module ApplicationHelper
       og: {
         site_name: 'gemify.me',
         title: 'gemify.me',
-        description: @user.name || 'gemify.meでゲームの予定を公開しましょう',
+        description: @user&.name || 'gemify.meでゲームの予定を公開しましょう',
         type: 'website',
         url: request.original_url,
         image: image_url('logo/icon.png'),

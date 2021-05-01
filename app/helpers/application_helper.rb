@@ -1,7 +1,6 @@
 module ApplicationHelper
   def default_meta_tags
     {
-      site: 'gemify.me',
       title: 'gemify.me',
       reverse: true,
       charset: 'utf-8',

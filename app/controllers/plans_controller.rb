@@ -1,5 +1,5 @@
 class PlansController < ApplicationController
-  skip_before_action :require_login, raise: false
+  skip_before_action :require_login, raise: false, only: [:show]
 
   def show
     @user = User.find_by(twitter_id: params[:id])

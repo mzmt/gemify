@@ -2,6 +2,7 @@
   .my-3
     = image_tag @user.icon_url, alt: 'icon', class: 'profile-icon', width: '70px'
     %p= @user.name
+    %p= '@'+@user.twitter_id
     %p= @user.description
     -# ここにSwitchのID、DiscordのID、PS4のIDとかまとめ
     -# %i.fab.fa-playstation

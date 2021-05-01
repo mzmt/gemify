@@ -18,6 +18,8 @@ class PlansController < ApplicationController
       end_date: Time.parse(plan_params[:date] + ' ' + plan_params[:end_time])
     )
     if @plan.save
+      flash[:game_name] = @plan.name
+      flash[:datetime] = @plan.start_date.strftime('%H:%M') + ' - ' + @plan.end_date.strftime('%H:%M')
       redirect_to "/#{current_user.twitter_id}", notice: '予定を作成しました🎉　ツイートする'
     else
       @week = Date.today...Date.today.since(7.days)

@@ -23,12 +23,19 @@
     - if flash[:notice]
       .flash.notification.is-primary.has-text-centered.is-radiusless.is-marginless#fadeout
         - if flash[:notice] == '予定を作成しました🎉　ツイートする'
-          %p.mt-2.mr-2.is-inline-block 予定を作成しました🎉
+          %p.mt-2.mr-2.is-inline-block.has-text-weight-bold 予定を作成しました🎉
+          :javascript
+            //新しいウィンドウをブラウザ中央に開く
+            function popupWindow(url, name, w, h) {
+              url = encodeURI(decodeURI(url));
+              wTop = window.screenTop + (window.innerHeight / 2) - (h / 2);
+              wLeft = window.screenLeft + (window.innerWidth / 2) - (w / 2);
+              window.open(url, name, 'width=' + w + ', height=' + h + ', top=' + wTop + ', left=' + wLeft + ', personalbar=0, toolbar=0, scrollbars=1, resizable=!');
+            }
           %button.button.is-twitter.has-text-weight-bold
-            %p.is-inline-block ツイートする
-            .ml-1
+            = link_to 'ツイートする', "https://twitter.com/share?ref_src=twsrc%5Etfw&show-count=false&text=#{flash[:game_name]}+&hashtags=gemify&url=https://gemify.me/#{@user.twitter_id}", onClick: "popupWindow(this.href,'tweet',650,470);return false;"
+            .mr-1
               %i.fab.fa-twitter
-
         - else
           = flash[:notice]
           = javascript_pack_tag 'fadeout'

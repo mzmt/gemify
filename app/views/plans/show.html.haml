@@ -1,4 +1,5 @@
-=render 'profile'
+- unless current_user == @user
+  =render 'profile'
 
 - @week.each do |date|
   =render 'modal', date: date

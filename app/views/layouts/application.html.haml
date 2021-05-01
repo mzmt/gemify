@@ -1,10 +1,19 @@
 !!!
 %html.has-background-black
   %head
+    -# Google Analytics
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4YNPEBG6W"></script>
+    :javascript
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-R4YNPEBG6W');
     %meta{ content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type", name: 'viewport', content: "width=device-width,initial-scale=1"}
-    %title Gemify
     = csrf_meta_tags
     = csp_meta_tag
+    = display_meta_tags(default_meta_tags)
+
+    %title Gemify
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     %link{rel: 'stylesheet',  href: 'https://use.fontawesome.com/releases/v5.9.0/css/all.css' }
     %script{ src: 'https://code.jquery.com/jquery-3.0.0.min.js' }

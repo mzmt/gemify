@@ -1,20 +1,21 @@
 .modal{ id: "modal-#{plan.id}" }
   .modal-background#modal-background
   .modal-content
-    .box.has-background-blur-black.mx-5
+    .box.has-background-blur-black.mx-5.is-paddingless
       %span.is-size-2.has-text-primary#close-modal-button ×
-      .has-text-centered.has-text-light.has-text-weight-bold.is-size-5
-        %p.is-size-2= plan.emoji
-        %p.mb-1{style: 'word-wrap: break-word;'}= plan.name
-        -# %p= plan.start_date.strftime('%-m/%-e')
-        %p= plan.start_date.strftime('%H:%M') + ' - ' + plan.end_date.strftime('%H:%M')
-        - if current_user == @user
-          .mb-3.mt-5
-            %button.button.is-primary.is-rounded.has-text-weight-bold.mr-2
-              = link_to 'ツイート', "https://twitter.com/share?ref_src=twsrc%5Etfw&show-count=false&text=#{plan.name}&url=https://gemify.me/#{@user.twitter_id}", onClick: "popupWindow(this.href,'tweet',650,470);return false;", class: 'has-text-white'
-              .ml-1
-                %i.fab.fa-twitter
-            = link_to '削除', plan, method: :delete, class: 'button is-danger is-rounded has-text-weight-bold'
+      .p-4
+        .has-text-centered.has-text-light.has-text-weight-bold.is-size-5
+          %p.is-size-2= plan.emoji
+          %p.mb-1{style: 'word-wrap: break-word;'}= plan.name
+          -# %p= plan.start_date.strftime('%-m/%-e')
+          %p= plan.start_date.strftime('%H:%M') + ' - ' + plan.end_date.strftime('%H:%M')
+          - if current_user == @user
+            .mb-3.mt-5
+              %button.button.is-primary.is-rounded.has-text-weight-bold.mr-2
+                = link_to 'ツイート', "https://twitter.com/share?ref_src=twsrc%5Etfw&show-count=false&text=#{plan.name}&url=https://gemify.me/#{@user.twitter_id}", onClick: "popupWindow(this.href,'tweet',650,470);return false;", class: 'has-text-white'
+                .ml-1
+                  %i.fab.fa-twitter
+              = link_to '削除', plan, method: :delete, class: 'button is-danger is-rounded has-text-weight-bold'
 
 :javascript
   //新しいウィンドウをブラウザ中央に開く

@@ -1,31 +1,31 @@
 .modal{ id: "modal-#{date.to_s}" }
   .modal-background#modal-background
   .modal-content
-    .box.has-background-blur-black.mx-5
+    .box.has-background-blur-black.mx-5.is-paddingless
       %span.is-size-2.has-text-primary#close-modal-button ×
-      - if @plan.errors.any?
-        %ul
-          - @plan.errors.full_messages.each do |message|
-            %li= message
-      = form_with model: @plan, local: true do |f|
-        .field
-          = f.label :name, 'ゲーム名', class: 'label has-text-white'
-          .control
-            = f.text_field :name, class: 'input is-medium has-background-dark is-dark has-text-white', required: true
-        .field
-          = f.label :time, date.strftime('%-m / %e'), class: 'label has-text-white'
-          .field-body.is-horizontal
-            .field.is-marginless
-              .control
-                -# minに現在時刻を設定
-                = f.time_field :start_time, class: 'input is-medium has-background-dark is-dark has-text-white', required: true
-              .control
-                = f.hidden_field :date, value: date.to_s
-            %span.mx-2.has-text-white.has-text-vcentered ～
-            .field
-              .control
-                = f.time_field :end_time, class: 'input is-medium has-background-dark is-dark has-text-white', required: true
-
-        .field.is-horizontal.mt-5
-          .control.has-text-centered
-            %button.button.is-primary.is-rounded.has-text-weight-bold 保存
+      .px-4.pb-4.pt-5
+        - if @plan.errors.any?
+          %ul
+            - @plan.errors.full_messages.each do |message|
+              %li= message
+        = form_with model: @plan, local: true do |f|
+          .field
+            = f.label :name, 'ゲーム名', class: 'label has-text-white'
+            .control
+              = f.text_field :name, class: 'input is-medium has-background-dark is-dark has-text-white', required: true
+          .field
+            = f.label :time, date.strftime('%-m / %e'), class: 'label has-text-white'
+            .field-body.is-horizontal
+              .field.is-marginless
+                .control
+                  -# minに現在時刻を設定
+                  = f.time_field :start_time, class: 'input is-medium has-background-dark is-dark has-text-white', required: true
+                .control
+                  = f.hidden_field :date, value: date.to_s
+              %span.mx-2.has-text-white.has-text-vcentered ～
+              .field
+                .control
+                  = f.time_field :end_time, class: 'input is-medium has-background-dark is-dark has-text-white', required: true
+          .field.is-horizontal.mt-5
+            .control.has-text-centered
+              %button.button.is-primary.is-rounded.has-text-weight-bold 保存

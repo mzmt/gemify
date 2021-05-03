@@ -9,7 +9,10 @@
     = image_tag 'sample_2.png', alt: 'gemify.meのサンプル画像', class: 'is-neon-orange', width: '45%'
 
   -# %p.mb-2 フレンドに予定を公開する👇
-  = link_to '　Twitterではじめる 🎮', "#{ENV.fetch('DOMAIN_NAME')}/oauth/twitter", class: 'button is-medium is-primary is-dark has-text-weight-bold has-text-white mb-6'
+  - unless current_user
+    = link_to '　Twitterではじめる 🎮', "#{ENV.fetch('DOMAIN_NAME')}/oauth/twitter", class: 'button is-medium is-primary is-dark has-text-weight-bold has-text-white mb-6'
+  - else
+    = link_to '　Twitterではじめる 🎮', "/#{current_user.twitter_id}", class: 'button is-medium is-primary is-dark has-text-weight-bold has-text-white mb-6'
 
   %h1.is-size-3.has-text-weight-bold.mb-5.mt-3 gemify.meの使い方
 

@@ -1,13 +1,13 @@
-.modal{ id: "modal-#{date.to_s}" }
+.modal{ id: "modal-#{date.to_s}", class: ('is-active' if "modal-#{date.to_s}" == @active_modal_id) }
   .modal-background#modal-background
   .modal-content
     .box.has-background-blur-black.mx-5.is-paddingless
       %span.is-size-2.has-text-primary#close-modal-button ×
       .px-4.pb-4.pt-5
-        - if @plan.errors.any?
+        - if @plan.errors.any? && "modal-#{date.to_s}" == @active_modal_id
           %ul
             - @plan.errors.full_messages.each do |message|
-              %li= message
+              %li.has-text-danger.mb-2= message
         = form_with model: @plan, local: true do |f|
           .field
             = f.label :name, 'ゲーム名', class: 'label has-text-white'

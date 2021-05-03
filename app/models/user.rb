@@ -22,4 +22,5 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 63 }
   validates :icon_url, presence: true, length: { maximum: 127 }
   validates :twitter_id, presence: true, length: { maximum: 63 }
+  validates :email, length: { maximum: 63 }
 end

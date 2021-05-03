@@ -24,6 +24,8 @@ class PlansController < ApplicationController
     else
       @week = Date.today...Date.today.since(7.days)
       @plans = current_user.plans.where(start_date: Time.current...Time.current.since(7.days)).order(:start_date)
+      @user = current_user
+      @active_modal_id = 'modal-' + @plan.start_date.strftime('%Y-%m-%d')
       render :show
     end
   end

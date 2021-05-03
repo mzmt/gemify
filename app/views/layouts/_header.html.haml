@@ -17,8 +17,8 @@
               %i.fas.fa-copy#copy
 
           .about.mb-2=link_to 'gemifyとは', root_path, class: 'has-text-white'
-          .terms.mb-2 利用規約
-          .policy.mb-2 プライバシーポリシー
+          .terms.mb-2=link_to '利用規約', terms_path, class: 'has-text-white'
+          .policy.mb-2=link_to 'プライバシーポリシー', policy_path ,class: 'has-text-white'
           .contact.mb-2
             = link_to 'お問い合わせ', 'https://forms.gle/UfzNwAqcq3KtKPkU7', class: 'has-text-white', target: :_blank
           -# .organized.mb-2

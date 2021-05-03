@@ -29,6 +29,6 @@
   = link_to '　利用開始はこちら 👾', "#{ENV.fetch('DOMAIN_NAME')}/oauth/twitter", class: 'button is-medium is-primary is-dark has-text-weight-bold has-text-white'
 
 .footer.mx-5.has-background-black.has-text-white.is-flex{ style: 'justify-content: space-between' }
-  %p 利用規約
-  %p プライバシーポリシー
+  %p=link_to '利用規約', terms_path, class: 'has-text-white'
+  %p=link_to 'プライバシーポリシー', policy_path, class: 'has-text-white'
   = link_to '運営', 'https://twitter.com/mzmt1204', class: 'has-text-white'

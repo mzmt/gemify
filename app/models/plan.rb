@@ -21,6 +21,7 @@ class Plan < ApplicationRecord
 
   # validations
   validates :user_id, presence: true
+  validates :name, presence: true, length: { maximum: 63 }
   validates :start_date, presence: true, uniqueness: { scope: %i[user_id end_date] }
   validates :end_date, presence: true, uniqueness: { scope: %i[user_id start_date] }
 
@@ -28,9 +29,7 @@ class Plan < ApplicationRecord
   validate :twicall_url_format, if: -> { twicall_url }
 
   def end_is_future_than_start
-    if end_date && start_date
-      errors.add(:end_date, 'は将来の時間を選択してください') if end_date < start_date
-    end
+    errors.add(:end_date, 'は開始時間より後を選択してください') if end_date && start_date && (end_date < start_date)
   end
 
   def twicall_url_format

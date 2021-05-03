@@ -1,0 +1,22 @@
+ja:
+  activerecord:
+    models:
+      user: 'ユーザー'
+      plan: 'プレイ予定'
+    attributes:
+      user:
+        name: '名前'
+        email: 'メールアドレス'
+      plan:
+        start_date: '開始時間'
+        end_date: '終了時間'
+        name: '予定'
+    errors:
+      messages:
+        record_invalid: '保存に失敗しました: %{errors}'
+  errors:
+    format: '%{attribute}%{message}'
+    messages:
+      blank: 'を入力してください'
+      wrong_length: 'の桁数が不正です'
+      too_long: 'の長さが不正です'

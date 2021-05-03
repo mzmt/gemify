@@ -1,8 +1,8 @@
 .modal{ id: "modal-#{plan.id}" }
   .modal-background#modal-background
   .modal-content
-    .box.has-background-black.mx-5
-      %button.button.is-size-2.is-primary.is-inverted.has-background-black#close-modal-button ×
+    .box.has-background-blur-black.mx-5
+      %span.is-size-2.has-text-primary#close-modal-button ×
       .has-text-centered.has-text-light.has-text-weight-bold.is-size-5
         %p.is-size-2= plan.emoji
         %p.mb-1{style: 'word-wrap: break-word;'}= plan.name

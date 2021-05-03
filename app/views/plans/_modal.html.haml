@@ -1,9 +1,8 @@
 .modal{ id: "modal-#{date.to_s}" }
   .modal-background#modal-background
   .modal-content
-    .box.has-background-black.mx-5
-      .label.mb-4
-        %button.button.is-size-2.is-primary.is-inverted.has-background-black#close-modal-button ×
+    .box.has-background-blur-black.mx-5
+      %span.is-size-2.has-text-primary#close-modal-button ×
       - if @plan.errors.any?
         %ul
           - @plan.errors.full_messages.each do |message|

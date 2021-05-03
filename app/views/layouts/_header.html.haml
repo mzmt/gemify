@@ -6,7 +6,7 @@
         = link_to 'gemify.me', root_path, class: 'logo'
       .is-pulled-right
         .btn
-        .drower.has-text-centered.has-text-white.is-size-5
+        .drower.has-text-centered.has-text-white.is-size-5.has-background-blur-black{ style: 'border-bottom-left-radius: 20px;' }
           = image_tag current_user.icon_url, alt: 'icon', class: 'profile-icon'
           %h2.is-size-4.mb-5
             = current_user.name

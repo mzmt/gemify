@@ -17,7 +17,7 @@ module ApplicationHelper
         description: @user&.name || 'gemify.meでゲームの予定を公開しましょう',
         type: 'website',
         url: request.original_url,
-        image: @user&.icon_url || image_url('logo/icon.png'),
+        image: image_url('logo/icon.png'),
         locale: 'ja_JP'
       },
       twitter: {

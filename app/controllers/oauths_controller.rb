@@ -1,5 +1,6 @@
 class OauthsController < ApplicationController
   skip_before_action :require_login, raise: false
+  include SlackNotify
 
   def oauth
     login_at(auth_params[:provider])
@@ -17,8 +18,10 @@ class OauthsController < ApplicationController
 
         reset_session # protect from session fixation attack
         auto_login(@user)
+        text = "new register!! twitter_id: #{@user.twitter_id}"
+        slack_notify(text, ENV.fetch('SLACK_INSURANCE_CARD_WEBHOOK_URL'))
         redirect_to "/#{current_user.twitter_id}", notice: '新規登録しました✨'
-      rescue
+      rescue StandardError
         redirect_to root_path, alert: '登録に失敗しました'
       end
     end

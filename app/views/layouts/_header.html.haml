@@ -11,8 +11,8 @@
           %h2.is-size-4.mb-5
             = current_user.name
           .plans あなたの予定
-          .mb-6.is-size-6.has-text-link#copy-target
-            = link_to "#{ENV.fetch('DOMAIN_NAME')}/#{current_user.twitter_id}", "#{ENV.fetch('DOMAIN_NAME')}/#{current_user.twitter_id}"
+          .mb-6.is-size-6.has-text-link
+            = link_to "#{ENV.fetch('DOMAIN_NAME')}/#{current_user.twitter_id}", "#{ENV.fetch('DOMAIN_NAME')}/#{current_user.twitter_id}", id: 'copy-target'
             .ml-1.is-size-4.is-inline-block
               %i.fas.fa-copy#copy
 

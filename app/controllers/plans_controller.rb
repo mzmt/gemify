@@ -18,7 +18,7 @@ class PlansController < ApplicationController
       end_date: Time.parse(plan_params[:date] + ' ' + plan_params[:end_time])
     )
     if @plan.save
-      flash[:game_name] = @plan.name
+      flash[:game_name] = "#{@plan.name}の予定を#{@plan.start_date.strftime('%H:%M')}〜で作成しました！"
       flash[:datetime] = @plan.start_date.strftime('%H:%M') + ' - ' + @plan.end_date.strftime('%H:%M')
       redirect_to "/#{current_user.twitter_id}", notice: '予定を作成しました🎉　ツイートする'
     else
